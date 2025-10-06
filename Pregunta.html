@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres ser mi novia?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #ffb6c1, #ff69b4);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .contenedor {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+    }
+    h1 {
+      color: #d63384;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    #si {
+      background: #ff4081;
+      color: #fff;
+    }
+    #no {
+      background: #6c757d;
+      color: #fff;
+    }
+    #mensaje {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+    #imagen {
+      margin: 15px auto 0 auto; /* centrado */
+      display: block; /* asegura que esté en el centro */
+      max-width: 100%;
+      height: 150px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>¿Quieres ser mi novia? 💖</h1>
+    <button id="si">Sí</button>
+    <button id="no">No</button>
+    <div id="mensaje"></div>
+    <img id="imagen" src="" alt="" style="display:none;">
+  </div>
+
+  <script>
+    const btnSi = document.getElementById("si");
+    const btnNo = document.getElementById("no");
+    const mensaje = document.getElementById("mensaje");
+    const imagen = document.getElementById("imagen");
+
+    const mensajesNo = [
+      "¿Segura? 😢",
+      "¿Segurísima? 🥺",
+      "¿Por qué nooo? 💔",
+      "Piénsalo otra vez 🙏",
+      "No me hagas esto 😭",
+      "Ya no sé qué más decir 😔"
+    ];
+
+    const imagenesNo = [
+      "gato1.png",
+      "gato2.png",
+      "gato3.png",
+      "gato4.png",
+      "gato5.png",
+      "gato6.png"
+    ];
+
+    let contadorNo = 0;
+
+    btnNo.addEventListener("click", () => {
+      mensaje.textContent = mensajesNo[contadorNo];
+      imagen.src = imagenesNo[contadorNo];
+      imagen.style.display = "block";
+
+      // Ajuste de tamaños
+      btnSi.style.transform = `scale(${1 + contadorNo * 0.2})`;
+      btnNo.style.transform = `scale(${1 - contadorNo * 0.1})`;
+
+      // Avanza y reinicia el ciclo si llega al final
+      contadorNo = (contadorNo + 1) % mensajesNo.length;
+    });
+
+    btnSi.addEventListener("click", () => {
+      mensaje.textContent = "Sabía que aceptarías 💘";
+      imagen.src = "gatoz.png"; // 👉 imagen cuando dice sí
+      imagen.style.display = "block";
+      btnSi.style.transform = "scale(1)";
+      btnNo.style.transform = "scale(1)";
+    });
+  </script>
+</body>
+</html>
